@@ -1,0 +1,3 @@
+[submodule "eZerojtag"]
+	path = eZerojtag
+	url = https://github.com/Igor13h/eZero-dirtyJtag
