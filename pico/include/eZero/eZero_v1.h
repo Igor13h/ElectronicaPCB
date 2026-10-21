@@ -1,7 +1,5 @@
-/* eZero1200v1 PCB header for host controller
- * RP2040 (U4, QFN-56) <-> FPGA (U5, 100-pin) board.
- * Pin map derived from the IPC-D-356 netlist 
- *
+/* eZero v1 PCB header for RP2040
+ * Pin map generated from IPC-D-356 netlist 
  * Naming:   PIN_<NAME>  = GPIO number      MASK_<NAME> = 1u << GPIO number
  */
 #pragma once
@@ -13,8 +11,8 @@
 
 #define NL_BIT(n)   (1u << (n))
 
-/*  derived from netlist:
- *  GPIO  U4 pin  Net (netlist)        Series part -> destination
+/*  netlist:
+ *  GPIO  U4 pin  Net (netlist)        Series part  --- destination
  *  ----  ------  -------------------  ------------------------------------------
  *   0      2     PICO_UART0_TX        R7  -> J3-1
  *   1      3     PICO_UART0_RX        R8  <- J3-3
@@ -71,7 +69,7 @@
 #define MASK_JTAG_ALL       (MASK_JTAG_OUT | MASK_CONF_TDO)
 
 /*
- *  XO2 configuration control / status
+ *  XO2 config
  *  CONF_PROGRAMN (GPIO10, active low) -> R28 -> FPGA_PROGRAMN 
  *  CONF_INITN    (GPIO2)  <- R20 <- FPGA_INITN (U5-77), input
  *  CONF_DONE     (GPIO3)  <- R26 <- FPGA_DONE  (U5-76), input
@@ -114,11 +112,11 @@
 #define MASK_L10            NL_BIT(PIN_L10)
 
 #define L_COUNT             11
-#define L_LO_BASE           11                    /* GPIO of L0 */
-#define L_HI_BASE           20                    /* GPIO of L5 */
-#define L_MASK_LO           (0x1Fu << L_LO_BASE)  /* L0..L4   = 0x0000F800 */
-#define L_MASK_HI           (0x3Fu << L_HI_BASE)  /* L5..L10  = 0x03F00000 */
-#define L_MASK              (L_MASK_LO | L_MASK_HI)   /*      = 0x03F0F800 */
+#define L_LO_BASE           11 
+#define L_HI_BASE           20  
+#define L_MASK_LO           (0x1Fu << L_LO_BASE)
+#define L_MASK_HI           (0x3Fu << L_HI_BASE)
+#define L_MASK              (L_MASK_LO | L_MASK_HI) 
 
 /* GPIO number of bus */
 #define L_PIN(n)            ((n) < 5 ? (L_LO_BASE + (n)) : (L_HI_BASE + (n) - 5))
@@ -145,7 +143,6 @@
 #define MASK_SPI0_ALL       (0xFu << PIN_SPI0_MISO)
 
  /* I2C0 
- * external PULL-ups
  */
 #define PIN_I2C0_SDA        4
 #define PIN_I2C0_SCL        5
