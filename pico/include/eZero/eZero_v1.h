@@ -1,5 +1,5 @@
 /* eZero v1 PCB header for RP2040
- * Pin map generated from IPC-D-356 netlist 
+ * Pin map generated from IPC-D-356 netlist
  * Naming:   PIN_<NAME>  = GPIO number      MASK_<NAME> = 1u << GPIO number
  */
 #pragma once
@@ -11,45 +11,8 @@
 
 #define NL_BIT(n)   (1u << (n))
 
-/*  netlist:
- *  GPIO  U4 pin  Net (netlist)        Series part  --- destination
- *  ----  ------  -------------------  ------------------------------------------
- *   0      2     PICO_UART0_TX        R7  -> J3-1
- *   1      3     PICO_UART0_RX        R8  <- J3-3
- *   2      4     CONF_INITN           R20 <- FPGA_INITN    (U5-77)
- *   3      5     CONF_DONE            R26 <- FPGA_DONE     (U5-76)
- *   4      6     PICO_I2C0_SDA        R24 -> FPGA_I2C_SDA  (U5-85)
- *   5      7     PICO_I2C0_SCL        R19 -> FPGA_I2C_SCL  (U5-86)
- *   6      8     CONF_TDI             R6  -> JTAG_TDI      (U5-94, J4-5)
- *   7      9     CONF_TDO             R9  <- JTAG_TDO      (U5-95, J4-7)
- *   8     11     CONF_TCK             R3  -> JTAG_TCK      (U5-91, J4-1)
- *   9     12     CONF_TMS             R5  -> JTAG_TMS      (U5-90, J4-3)
- *  10     13     CONF_PROGRAMN        R28 -> FPGA_PROGRAMN (U5-81)
- *  11     14     L0                   direct -> U5-27
- *  12     15     L1                   direct -> U5-28
- *  13     16     L2                   direct -> U5-29
- *  14     17     L3                   direct -> U5-30
- *  15     18     L4                   direct -> U5-34
- *  16     27     PICO_SPI0_MISO       R15 <- FPGA_SPI_SO   (U5-32)
- *  17     28     PICO_SPI0_CS         R11 -> FPGA_SPI_SN   (U5-48)
- *  18     29     PICO_SPI0_SCK        R13 -> FPGA_SPI_MCLK (U5-31)
- *  19     30     PICO_SPI0_MOSI       R16 -> FPGA_SPI_SI   (U5-49)
- *  20     31     L5                   direct -> U5-35
- *  21     32     L6                   direct -> U5-36
- *  22     34     L7                   direct -> U5-37
- *  23     35     L8                   direct -> U5-38
- *  24     36     L9                   direct -> U5-39
- *  25     37     L10                  direct -> U5-40
- *  26     38     PICO_ADC0            J5-2
- *  27     39     PICO_ADC1            J5-3
- *  28     40     PICO_ADC2            J5-4
- *  29     41     PICO_ADC3            J5-5
- *
- */
-
  /*
  * JTAG config port
- * connected through a series resistor (R6/R9/R3/R5) onto the XO2
  * Keep HIGH-Z whenever an
  * external programmer is plugged into J4 and R6/R9/R3/R5 are soldered
  *   TDI : Pico -> XO2   
